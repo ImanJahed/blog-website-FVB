@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    # Local Apps
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILE_DIRS = [
+STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 MEDIA_URL = 'media/'
