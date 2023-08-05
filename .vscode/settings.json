@@ -45,5 +45,8 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.typeCheckingMode": "basic",
+  "[django-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

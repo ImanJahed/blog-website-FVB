@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+from blog.models import Article
+
+
 # Create your views here.
 def home(request):
-    return render(request, 'pages/home.html')
+    articles = Article.objects.all()
+    context = {'articles': articles}
+    return render(request, 'pages/home.html', context)

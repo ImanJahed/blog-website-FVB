@@ -30,15 +30,20 @@ def logout_user(request):
 
 
 def user_register(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+        
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             username = cd['username']
             password = cd['password']
-            User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password)
+            login(request, user)
+
             messages.success(request, 'Your account successfully created')
-            return redirect('login')
+            return redirect('home')
 
         return render(request, 'account/signup.html', {'form': form})
     
