@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # Third Party Apps
     'django_cleanup.apps.CleanupConfig',
+    'django_render_partial',
 
     # Local Apps
     'pages.apps.PagesConfig',
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'context_processors.context_processors.recent_articles',
+                'context_processors.context_processors.categories',
             ],
         },
     },

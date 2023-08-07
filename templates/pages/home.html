@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load humanize %}
+{% load render_partial %}
+
 {% block title %} Home Page {% endblock title %}
    
 {% block content %}
@@ -327,7 +329,8 @@
           </div>
         </div>
       </div>
-{% include 'partial/side_bar.html' %}
+{% comment %} {% include 'partial/side_bar.html' %} {% endcomment %}
+{% render_partial 'sidebar' %}
     </div>
   </div>
 </section>
