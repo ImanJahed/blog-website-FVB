@@ -1,8 +1,13 @@
+from typing import Iterable, Optional
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
+from django.template.defaultfilters import slugify
+import uuid
 
 # Create your models here.
+
+
 class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -12,10 +17,17 @@ class Article(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     category = models.ManyToManyField('Category')
+    slug_article = models.SlugField(blank=True)
 
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("article-detail", kwargs={"slug": self.slug_article})
+
+    def save(self, *args, **kwargs):
+        self.slug_article = slugify(self.title)
+        return super(Article, self).save(*args, **kwargs)
 
 
 class Category(models.Model):
