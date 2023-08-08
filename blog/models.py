@@ -1,12 +1,17 @@
 from typing import Iterable, Optional
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.template.defaultfilters import slugify
 import uuid
 
 # Create your models here.
 
+class ArticlesManage(models.Manager):
+    def get_queryset(self):
+        
+        return super().get_queryset().filter(is_published=True)
 
 class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,6 +23,9 @@ class Article(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     category = models.ManyToManyField('Category')
     slug_article = models.SlugField(blank=True)
+
+    objects = models.Manager()
+    article = ArticlesManage()
 
     def __str__(self):
         return self.title

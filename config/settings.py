@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Third Party Apps
     'django_cleanup.apps.CleanupConfig',
     'django_render_partial',
+    'django_social_share',
 
     # Local Apps
     'pages.apps.PagesConfig',

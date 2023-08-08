@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 from blog.models import Article
 
@@ -6,8 +8,8 @@ from blog.models import Article
 # Create your views here.
 def home(request):
     articles = Article.objects.all()
-    
-    context = {'articles': articles}
+
+    context = {'articles': articles,  }
     return render(request, 'pages/home.html', context)
 
 

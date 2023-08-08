@@ -30,12 +30,13 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                        <li class="nav-item {% if request.resolver_match.url_name == 'article-list' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'article-list' %}">All Articles</a>
+                        </li>
                         <li class="nav-item {% if request.resolver_match.url_name == 'about-us' %}active{% endif %}">
                             <a class="nav-link" href="about.html">About Us</a>
                         </li>
-                        <li class="nav-item {% if request.resolver_match.url_name == 'article-list' %}active{% endif %}">
-                            <a class="nav-link" href="{% url 'article-list' %}">Blog Entries</a>
-                        </li>
+
                         {% comment %} <li class="nav-item">
                             <a class="nav-link" href="post-details.html">Post Details</a>
                         </li> {% endcomment %}

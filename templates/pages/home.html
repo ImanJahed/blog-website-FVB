@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load render_partial %}
-
+{% load social_share %}
 {% block title %} Home Page {% endblock title %}
    
 {% block content %}
@@ -201,6 +201,7 @@
                           <li><i class="fa fa-share-alt"></i></li>
                           <li><a href="#">Facebook</a>,</li>
                           <li><a href="#"> Twitter</a></li>
+                        {% post_to_telegram "see this post" article.get_absolute_url "Telegram" %}
                         </ul>
                       </div>
                     </div>
