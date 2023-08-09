@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.template.defaultfilters import slugify
-import uuid
+
 
 # Create your models here.
 
@@ -47,3 +47,17 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comment')
+    text = models.TextField()
+
+    parent = models.ForeignKey('self', on_delete=models.CASCADE,null=True, blank=True , related_name='replies')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.text

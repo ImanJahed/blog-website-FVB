@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Article, Category
+from .models import Article, Category, Comment
 
 # Create your views here.
 def article_list(request, cat=None):
@@ -32,6 +32,10 @@ def article_list(request, cat=None):
 
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug_article=slug)
-
+    if request.method == 'POST':
+        comment = request.POST.get('text')
+        parent_id = request.POST.get('parent')
+        
+        Comment.objects.create(article=article, user=request.user, text=comment, parent_id=parent_id)
     context = {'article': article}
     return render(request, 'blog/article_detail.html', context)
