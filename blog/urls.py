@@ -6,4 +6,6 @@ urlpatterns = [
     path('list/', views.article_list, name='article-list'),
     path('detail/<slug:slug>', views.article_detail, name='article-detail'),
     path('category/<str:cat>', views.article_list, name='category-list'),
+    # path('search/', views.article_list, name='search'),
+    path('search/', views.search, name='search'),
 ]

@@ -24,7 +24,16 @@ def article_list(request, cat=None):
         return render(request, 'blog/article_list.html', context)
     
     context['articles'] = page_object
-   
+
+
+    # if request.GET.get('q'):
+    #     q = request.GET.get('q')
+    #     search = Article.objects.filter(title__icontains=q)
+    #     paginator = Paginator(search, 1)
+    #     page_object = paginator.get_page(page)
+    #     context['articles'] = page_object
+    #     return render(request, 'blog/article_list.html', context)
+    
 
     return render(request, 'blog/article_list.html', context)
 
@@ -39,3 +48,17 @@ def article_detail(request, slug):
         Comment.objects.create(article=article, user=request.user, text=comment, parent_id=parent_id)
     context = {'article': article}
     return render(request, 'blog/article_detail.html', context)
+
+
+
+
+def search(request):
+    q = request.GET.get('q')
+    articles = Article.objects.filter(title__icontains=q)
+    paginator = Paginator(articles, 1)
+    page = request.GET.get('page')
+
+    page_object = paginator.get_page(page)
+
+    context = {'articles': page_object}
+    return render(request, 'blog/article_list.html',context )
