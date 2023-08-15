@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-15 08:56+0330\n"
+"PO-Revision-Date: 2023-08-15 09:04+0330\n"
+"Last-Translator: imi Jahed <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: .\templates\pages\about_us.html:15
+msgid "about us"
+msgstr "درباره ما"
+
+#: .\templates\pages\about_us.html:16
+msgid "more about us!"
+msgstr "در ما بیشتر بدانید"
+
+#: .\templates\pages\contact_us.html:14
+msgid "Contact Us"
+msgstr "تماس با ما"
+
+#: .\templates\pages\contact_us.html:15
+msgid "let’s stay in touch!"
+msgstr "با ما در ارتباط باشید"
+
+#: .\templates\pages\contact_us.html:35
+msgid "Send us a message"
+msgstr "به ما پیام ارسال کنید"
+
+#: .\templates\pages\contact_us.html:80
+msgid "Send Message"
+msgstr "ارسال پیام"
+
+#: .\templates\pages\contact_us.html:91
+msgid "contact information"
+msgstr "اطلاعات تماس"
+
+#: .\templates\pages\contact_us.html:97
+msgid "PHONE NUMBER"
+msgstr "شماره تلفن"
+
+#: .\templates\pages\contact_us.html:101
+msgid "EMAIL ADDRESS"
+msgstr "آدرس ایمیل"
+
+#: .\templates\pages\contact_us.html:106
+msgid "STREET ADDRESS"
+msgstr "آدرس"
+
+#: .\templates\pages\home.html:7
+msgid "Home Page"
+msgstr "خانه"
+
+#: .\templates\pages\home.html:31
+#| msgid "12 Comments"
+msgid "12 Comments "
+msgstr " دیدگاه"

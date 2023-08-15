@@ -4,10 +4,11 @@ from .models import Article, Category, Comment
 
 # Create your views here.
 def article_list(request, cat=None):
-    context = {}
     articles = Article.objects.all()
     paginator = Paginator(articles, 2)
     page = request.GET.get('page')
+    context = {}
+
     try:
         page_object = paginator.get_page(page)
         
@@ -20,20 +21,14 @@ def article_list(request, cat=None):
     if cat:
         category = get_object_or_404(Category, name=cat)
         articles = category.article_set.all()
-        context['articles'] = articles
+        paginator = Paginator(articles, 2)
+        page_object = paginator.get_page(page)
+
+        context['articles'] = page_object
         return render(request, 'blog/article_list.html', context)
     
     context['articles'] = page_object
-
-
-    # if request.GET.get('q'):
-    #     q = request.GET.get('q')
-    #     search = Article.objects.filter(title__icontains=q)
-    #     paginator = Paginator(search, 1)
-    #     page_object = paginator.get_page(page)
-    #     context['articles'] = page_object
-    #     return render(request, 'blog/article_list.html', context)
-    
+ 
 
     return render(request, 'blog/article_list.html', context)
 

@@ -1,9 +1,10 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load humanize %}
+{% load i18n %}
 {% load render_partial %}
 {% load social_share %}
-{% block title %} Home Page {% endblock title %}
+{% block title %} {% trans "Home Page" %} {% endblock title %}
    
 {% block content %}
 <!-- Page Content -->
@@ -27,7 +28,7 @@
             <ul class="post-info">
               <li><a href="#"> {{article.author.username}} </a></li>
               <li><a href="#">{{article.created_date|naturaltime}} </a></li>
-              <li><a href="#">12 Comments</a></li>
+              <li><a href="#">{% blocktrans %}12 Comments {% endblocktrans %}</a></li>
             </ul>
           </div>
         </div>

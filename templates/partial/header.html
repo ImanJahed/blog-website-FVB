@@ -1,6 +1,6 @@
 {% load static %}
-
-
+{% load i18n %}
+{% load l10n %}
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -15,8 +15,8 @@
     <header class="">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <h2>Stand Blog<em>.</em></h2>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <h2> "Stand Blog" <em>.</em></h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,22 +26,22 @@
                     <ul class="navbar-nav ml-auto">
                         
                         <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                            <a class="nav-link" href="{% url 'home' %}">Home
+                            <a class="nav-link" href="{% url 'home' %}"> {% translate "Home"%}  
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item {% if request.resolver_match.url_name == 'article-list' %}active{% endif %}">
-                            <a class="nav-link" href="{% url 'article-list' %}">All Articles</a>
+                            <a class="nav-link" href="{% url 'article-list' %}">{% translate "All Articles" %}</a>
                         </li>
                         <li class="nav-item {% if request.resolver_match.url_name == 'about-us' %}active{% endif %}">
-                            <a class="nav-link" href="about.html">About Us</a>
+                            <a class="nav-link" href="{% url 'about' %}">{% translate "About Us" %}</a>
                         </li>
 
                         {% comment %} <li class="nav-item">
                             <a class="nav-link" href="post-details.html">Post Details</a>
                         </li> {% endcomment %}
                         <li class="nav-item {% if request.resolver_match.url_name == 'contact-us' %}active{% endif %}">
-                            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                            <a class="nav-link" href="{% url 'contact' %}">{% translate "Contact Us" %}</a>
                         </li>
                         <li class="nav-item">
                             
@@ -55,12 +55,12 @@
                             </li>
                             <a class="nav-link" href="#"> {{request.user.username}} </a>
                             <li class="nav-item">
-                                <a class="nav-link badge badge-danger mt-2" href="{% url 'account:logout' %}"> Log Out </a>
+                                <a class="nav-link badge badge-danger mt-2" href="{% url 'account:logout' %}"> {% trans "Log Out" %} </a>
                             </li>
                             {% else %}
-                            <a class="nav-link" href=" {% url 'account:login' %}"> Login </a>  
+                            <a class="nav-link" href=" {% url 'account:login' %}"> {% trans "Login" %} </a>  
                             <li class="nav-item">
-                                <a class="nav-link" href=" {% url 'account:signup' %}"> Sign Up </a>
+                                <a class="nav-link" href=" {% url 'account:signup' %}"> {% trans "Sign Up" %} </a>
                             </li>
                             {% endif %}
                                 
@@ -71,3 +71,4 @@
             </div>
         </nav>
     </header>
+ 

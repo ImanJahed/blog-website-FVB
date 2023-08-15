@@ -40,3 +40,8 @@ def contact_us(request):
 
     form = ContactForm()
     return render(request, 'pages/contact_us.html', {'form': form})
+
+
+
+def about_us(request):
+    return render(request, 'pages/about_us.html')

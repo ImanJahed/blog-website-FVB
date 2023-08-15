@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('account/', include('account.urls')),
     path('blog/', include('blog.urls')),
-
+    path('rosetta/', include('rosetta.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
