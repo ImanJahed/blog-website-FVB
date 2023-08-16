@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Article, Category, Comment
 
@@ -57,3 +58,19 @@ def search(request):
 
     context = {'articles': page_object}
     return render(request, 'blog/article_list.html',context )
+
+
+def liked(request, pk):
+    article= Article.objects.get(pk=pk)
+
+    if request.user in article.like.all():
+        article.like.remove(request.user)
+        return JsonResponse({'status':'unliked'})
+
+    else:
+        article.like.add(request.user)
+        return JsonResponse({'status':'liked'})
+
+    
+        
+

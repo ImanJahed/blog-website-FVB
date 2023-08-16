@@ -69,9 +69,16 @@
                       <div class="row">
                         <div class="col-6">
                           <ul class="post-tags">
-                            <li><i class="fa fa-tags"></i></li>
-                            <li><a href="#">Best Templates</a>,</li>
-                            <li><a href="#">TemplateMo</a></li>
+                            {% if request.user in article.like.all %}
+                            {% comment %} <li><i class="fa fa-tags"></i></li> {% endcomment %}
+                            <li ><a onclick="like('{{article.id}}')" style="cursor:pointer;"><i  class='fa fa-heart' id="like-o" ></i></a></li>
+                            <li><a id="counter">{{article.like.count}}</a></li>
+
+                            {% else %}
+                            <li><a onclick="like('{{article.id}}')" style="cursor:pointer"><i style="color: red;" class='fa fa-heart-o' id="like-o"></i></a></li>
+
+                            <li><a id="counter">{{article.like.count}}</a></li>
+                            {% endif %}
                           </ul>
                         </div>
                         <div class="col-6">
@@ -296,6 +303,24 @@
   </section>
 
   <script>
+
+    let likeEle = document.getElementById('like-o')
+    let counter = document.getElementById('counter')
+    function like(id){
+
+      $.get(`/blog/like/${id}`).then((res)=>{
+      if(res['status']==='liked'){
+        likeEle.className = 'fa fa-heart'
+        counter.innerText = Number(counter.innerText) + 1
+      }else{
+        likeEle.className = 'fa fa-heart-o'
+        counter.innerText = Number(counter.innerText) - 1
+      }
+    })
+  };
+
+
+
     function set_id(id){
       document.getElementById('subject').value = id;
       window.location.href = "#message";

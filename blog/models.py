@@ -23,6 +23,7 @@ class Article(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     category = models.ManyToManyField('Category')
     slug_article = models.SlugField(blank=True)
+    like = models.ManyToManyField(User, blank=True, related_name='user_like')
 
     objects = models.Manager()
     article = ArticlesManage()
